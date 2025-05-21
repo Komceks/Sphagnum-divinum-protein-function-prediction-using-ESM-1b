@@ -100,6 +100,7 @@ labels_uv = clusterer.fit_predict(emb_umap)
 
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
 labels = np.load("/content/labels.npy", allow_pickle=True)
 df = pd.DataFrame({
@@ -114,7 +115,7 @@ plt.figure(figsize=(8,6))
 for c in df["cluster"].unique():
     mask = df["cluster"] == c
     plt.scatter(df.loc[mask, "umap1"], df.loc[mask, "umap2"],
-                s=5, label=f"Cluster {c}" if c!=-1 else "Noise", alpha=0.6)
+                s=5, label=f"{c} klasteris" if c!=-1 else "Triukšmas", alpha=0.6)
 
 plt.legend(markerscale=1.5, fontsize="small", ncol=4, bbox_to_anchor=(1,1))
 plt.title("Sphagnum divinum Proteomo klasteriai")
